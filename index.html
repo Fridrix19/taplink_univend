@@ -5,11 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UniVend — ссылки</title>
   <style>
+    @font-face {
+      font-family: "Gros Ventre";
+      src: url("font/Gros%20Ventre%20Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Gros Ventre";
+      src: url("font/Gros%20Ventre%20Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Gros Ventre";
+      src: url("font/Gros%20Ventre%20Light.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Gros Ventre";
+      src: url("font/Gros%20Ventre%20Semibold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --blue: #090c9b;
       --ink: #3c3744;
       --muted: rgba(60, 55, 68, 0.68);
       --line: rgba(9, 12, 155, 0.12);
+      --grid: #e2e2e2;
       --bg: #ffffff;
       --card: rgba(255, 255, 255, 0.86);
       --shadow: 0 18px 60px rgba(9, 12, 155, 0.12);
@@ -26,11 +59,11 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Gros Ventre", Arial, Helvetica, sans-serif;
       color: var(--ink);
       background:
-        linear-gradient(to right, var(--line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--line) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
         var(--bg);
       background-size: 24px 24px;
     }
@@ -45,7 +78,7 @@
 
     .taplink-card {
       width: min(100%, 460px);
-      padding: 32px 20px 24px;
+      padding: 32px 20px;
       border: 1px solid var(--line);
       background: var(--card);
       box-shadow: var(--shadow);
@@ -53,34 +86,10 @@
     }
 
     .taplink-logo {
-      width: 72px;
-      height: 72px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 18px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 28px;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .taplink-title {
-      margin: 0;
-      color: var(--blue);
-      font-size: 32px;
-      font-weight: 800;
-      line-height: 1.05;
-      text-align: center;
-    }
-
-    .taplink-subtitle {
-      margin: 12px auto 28px;
-      max-width: 340px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.35;
-      text-align: center;
+      display: block;
+      width: min(100%, 260px);
+      height: auto;
+      margin: 0 auto 28px;
     }
 
     .taplink-links {
@@ -91,28 +100,44 @@
       list-style: none;
     }
 
+    .taplink-links + .taplink-links {
+      margin-top: 24px;
+    }
+
     .taplink-link {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 12px;
       min-height: 56px;
       padding: 0 18px;
       border: 1px solid var(--blue);
       background: #fff;
       color: var(--blue);
       font-size: 17px;
-      font-weight: 700;
-      line-height: 1.2;
+      font-weight: 550;
+      line-height: 1;
       text-decoration: none;
       transition: background-color 160ms ease, color 160ms ease, transform 120ms ease, opacity 160ms ease;
     }
 
     .taplink-link::after {
-      content: "→";
+      content: "";
       flex: 0 0 auto;
-      margin-left: 16px;
-      font-size: 22px;
-      line-height: 1;
+      margin-left: auto;
+      width: 11px;
+      height: 11px;
+      border-top: 1.8px solid currentColor;
+      border-right: 1.8px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 160ms ease;
+    }
+
+    .taplink-link-icon {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      display: block;
+      object-fit: contain;
     }
 
     .taplink-link:hover,
@@ -122,17 +147,19 @@
       outline: 0;
     }
 
+    .taplink-link:hover::after,
+    .taplink-link:focus-visible::after {
+      transform: translate(2px, -2px) rotate(45deg);
+    }
+
+    .taplink-link:hover .taplink-link-icon,
+    .taplink-link:focus-visible .taplink-link-icon {
+      filter: brightness(0) invert(1);
+    }
+
     .taplink-link:active {
       opacity: 0.72;
       transform: translateY(1px);
-    }
-
-    .taplink-note {
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-      text-align: center;
     }
 
     @media (max-width: 480px) {
@@ -145,8 +172,9 @@
         padding: 28px 16px 20px;
       }
 
-      .taplink-title {
-        font-size: 28px;
+      .taplink-logo {
+        width: min(100%, 230px);
+        margin-bottom: 24px;
       }
 
       .taplink-link {
@@ -160,19 +188,23 @@
 <body>
   <main class="taplink-page" aria-label="Страница ссылок UniVend">
     <section class="taplink-card">
-      <div class="taplink-logo" aria-hidden="true">UV</div>
-      <h1 class="taplink-title">UniVend</h1>
-      <p class="taplink-subtitle">Быстрые ссылки, контакты и важная информация. Позже сюда можно добавить всё нужное.</p>
+      <img class="taplink-logo" src="Logo.svg" alt="UniVend">
 
       <ul class="taplink-links">
-        <li><a class="taplink-link" href="#">Основная ссылка</a></li>
-        <li><a class="taplink-link" href="#">Каталог / услуги</a></li>
-        <li><a class="taplink-link" href="#">Написать в Telegram</a></li>
-        <li><a class="taplink-link" href="#">Группа ВКонтакте</a></li>
-        <li><a class="taplink-link" href="#">Контакты</a></li>
+        <li><a class="taplink-link" href="https://uni-vend.ru/" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/site.svg" alt="" aria-hidden="true">Сайт</a></li>
+        <li><a class="taplink-link" href="https://univendbook.vercel.app/" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/guide.svg" alt="" aria-hidden="true">Руководство</a></li>
+        <li><a class="taplink-link" href="https://sticker-peel.vercel.app/" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/stickers.svg" alt="" aria-hidden="true">Приложение для наклеек</a></li>
       </ul>
 
-      <p class="taplink-note">Черновая отдельная страница, не подключенная к навигации проекта.</p>
+      <ul class="taplink-links">
+        <li><a class="taplink-link" href="https://t.me/UniVendspb" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/telegram.svg" alt="" aria-hidden="true">Telegram</a></li>
+        <li><a class="taplink-link" href="https://vk.com/club236949504" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/vk.svg" alt="" aria-hidden="true">VK</a></li>
+        <li><a class="taplink-link" href="https://ru.pinterest.com/UniVendspb/" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/pinterest.svg" alt="" aria-hidden="true">Pinterest</a></li>
+        <li><a class="taplink-link" href="https://dzen.ru/id/663828e620437023d8e893ab" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/dzen.ico" alt="" aria-hidden="true">Дзен</a></li>
+        <li><a class="taplink-link" href="https://rutube.ru/channel/78265070/" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/rutube.ico" alt="" aria-hidden="true">RuTube</a></li>
+        <li><a class="taplink-link" href="https://2gis.ru/spb/search/%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D0%BD%D0%B4/firm/70000001111504648/30.307731%2C59.920858?m=30.092897%2C59.942319%2F9.69&amp;immersive=on" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/twogis.ico" alt="" aria-hidden="true">2Гис</a></li>
+        <li><a class="taplink-link" href="https://yandex.ru/maps/org/univend/48312390628/?ll=30.307718%2C59.920840&amp;mode=search&amp;sctx=ZAAAAAgBEAAaKAoSCY9WtaSjUD5AEQgB%2BRIq%2BE1AEhIJjPSidr%2BK7j8RlGx1OSUg0j8iBgABAgMEBSgKOABAAkgBYjpyZWFycj1zY2hlbWVfTG9jYWwvR2VvdXBwZXIvQWR2ZXJ0cy9DdXN0b21NYXhhZHYvRW5hYmxlZD0xYjpyZWFycj1zY2hlbWVfTG9jYWwvR2VvdXBwZXIvQWR2ZXJ0cy9DdXN0b21NYXhhZHYvTWF4YWR2PTE1YkRyZWFycj1zY2hlbWVfTG9jYWwvR2VvdXBwZXIvQWR2ZXJ0cy9DdXN0b21NYXhhZHYvUmVnaW9uSWRzPVsxLDEwMTc0XWJAcmVhcnI9c2NoZW1lX0xvY2FsL0dlb3VwcGVyL0FkdmVydHMvTWF4YWR2VG9wTWl4L01heGFkdkZvck1peD0xMGoCcnWdAc3MzD2gAQCoAQC9AcUW6XLCAQbkp5L9swGCAg7Qo9C90LjQstC10L3QtIoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D&amp;sll=30.307718%2C59.920840&amp;sspn=0.029826%2C0.008855&amp;text=%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D0%BD%D0%B4&amp;z=16" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/yandexmaps.ico" alt="" aria-hidden="true">Яндекс Карты</a></li>
+      </ul>
     </section>
   </main>
 </body>
