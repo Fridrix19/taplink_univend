@@ -42,7 +42,7 @@
       --ink: #3c3744;
       --muted: rgba(60, 55, 68, 0.68);
       --line: rgba(9, 12, 155, 0.12);
-      --grid: #e2e2e2;
+      --grid: rgba(9, 12, 155, 0.035);
       --bg: #ffffff;
       --card: rgba(255, 255, 255, 0.86);
       --shadow: 0 18px 60px rgba(9, 12, 155, 0.12);
@@ -66,6 +66,7 @@
         linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
         var(--bg);
       background-size: 24px 24px;
+      background-position: calc(50% - 0.5px) calc(50% - 0.5px);
     }
 
     .taplink-page {
@@ -102,6 +103,14 @@
 
     .taplink-links + .taplink-links {
       margin-top: 24px;
+    }
+
+    .taplink-music {
+      margin-top: 40px;
+    }
+
+    .taplink-maps {
+      margin-top: 40px;
     }
 
     .taplink-link {
@@ -154,6 +163,21 @@
 
     .taplink-link:hover .taplink-link-icon,
     .taplink-link:focus-visible .taplink-link-icon {
+      filter: none;
+    }
+
+    .taplink-link:hover .taplink-link-icon[src$="site.svg"],
+    .taplink-link:focus-visible .taplink-link-icon[src$="site.svg"],
+    .taplink-link:hover .taplink-link-icon[src$="guide.svg"],
+    .taplink-link:focus-visible .taplink-link-icon[src$="guide.svg"],
+    .taplink-link:hover .taplink-link-icon[src$="stickers.svg"],
+    .taplink-link:focus-visible .taplink-link-icon[src$="stickers.svg"],
+    .taplink-link:hover .taplink-link-icon[src$="telegram.svg"],
+    .taplink-link:focus-visible .taplink-link-icon[src$="telegram.svg"],
+    .taplink-link:hover .taplink-link-icon[src$="vk.svg"],
+    .taplink-link:focus-visible .taplink-link-icon[src$="vk.svg"],
+    .taplink-link:hover .taplink-link-icon[src$="pinterest.svg"],
+    .taplink-link:focus-visible .taplink-link-icon[src$="pinterest.svg"] {
       filter: brightness(0) invert(1);
     }
 
@@ -182,6 +206,14 @@
         padding-inline: 16px;
         font-size: 16px;
       }
+
+      .taplink-music {
+        margin-top: 32px;
+      }
+
+      .taplink-maps {
+        margin-top: 32px;
+      }
     }
   </style>
 </head>
@@ -202,8 +234,16 @@
         <li><a class="taplink-link" href="https://ru.pinterest.com/UniVendspb/" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/pinterest.svg" alt="" aria-hidden="true">Pinterest</a></li>
         <li><a class="taplink-link" href="https://dzen.ru/id/663828e620437023d8e893ab" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/dzen.ico" alt="" aria-hidden="true">Дзен</a></li>
         <li><a class="taplink-link" href="https://rutube.ru/channel/78265070/" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/rutube.ico" alt="" aria-hidden="true">RuTube</a></li>
+      </ul>
+
+      <ul class="taplink-links taplink-maps" aria-label="Карты">
         <li><a class="taplink-link" href="https://2gis.ru/spb/search/%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D0%BD%D0%B4/firm/70000001111504648/30.307731%2C59.920858?m=30.092897%2C59.942319%2F9.69&amp;immersive=on" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/twogis.ico" alt="" aria-hidden="true">2Гис</a></li>
         <li><a class="taplink-link" href="https://yandex.ru/maps/org/univend/48312390628/?ll=30.307718%2C59.920840&amp;mode=search&amp;sctx=ZAAAAAgBEAAaKAoSCY9WtaSjUD5AEQgB%2BRIq%2BE1AEhIJjPSidr%2BK7j8RlGx1OSUg0j8iBgABAgMEBSgKOABAAkgBYjpyZWFycj1zY2hlbWVfTG9jYWwvR2VvdXBwZXIvQWR2ZXJ0cy9DdXN0b21NYXhhZHYvRW5hYmxlZD0xYjpyZWFycj1zY2hlbWVfTG9jYWwvR2VvdXBwZXIvQWR2ZXJ0cy9DdXN0b21NYXhhZHYvTWF4YWR2PTE1YkRyZWFycj1zY2hlbWVfTG9jYWwvR2VvdXBwZXIvQWR2ZXJ0cy9DdXN0b21NYXhhZHYvUmVnaW9uSWRzPVsxLDEwMTc0XWJAcmVhcnI9c2NoZW1lX0xvY2FsL0dlb3VwcGVyL0FkdmVydHMvTWF4YWR2VG9wTWl4L01heGFkdkZvck1peD0xMGoCcnWdAc3MzD2gAQCoAQC9AcUW6XLCAQbkp5L9swGCAg7Qo9C90LjQstC10L3QtIoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D&amp;sll=30.307718%2C59.920840&amp;sspn=0.029826%2C0.008855&amp;text=%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D0%BD%D0%B4&amp;z=16" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/yandexmaps.ico" alt="" aria-hidden="true">Яндекс Карты</a></li>
+      </ul>
+
+      <ul class="taplink-links taplink-music" aria-label="Музыкальные площадки">
+        <li><a class="taplink-link" href="https://vk.com/artist/fridrix" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/vk-music.svg" alt="" aria-hidden="true">VK музыка</a></li>
+        <li><a class="taplink-link" href="https://music.yandex.ru/artist/17061829" target="_blank" rel="noopener"><img class="taplink-link-icon" src="assets/icons/yandex-music.svg" alt="" aria-hidden="true">Яндекс Музыка</a></li>
       </ul>
     </section>
   </main>
